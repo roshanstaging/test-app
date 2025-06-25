@@ -1,2 +1,8 @@
 websockets==15.0.1
 numpy==2.3.1
+requests==2.32.4
+aiohttp==3.12.13
+aiohttp-cors==0.8.1
+aiortc==1.13.0
+av==14.4.0
+opencv-python==4.11.0.86
