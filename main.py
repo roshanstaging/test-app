@@ -309,7 +309,7 @@ class StreamingAudioTrack(AudioStreamTrack):
 class StreamManager:
     """Manages multiple streaming sessions"""
 
-    def __init__(self, inference_server_url="ws://localhost:8000/inference"):
+    def __init__(self, inference_server_url="wss://ftwoltm5pcoc72-8000.proxy.runpod.net/inference"):
         self.sessions: Dict[str, Dict] = {}  # session_id -> {video_track, audio_track, clients}
         self.pcs: Set[RTCPeerConnection] = set()
         self.inference_server_url = inference_server_url
@@ -792,7 +792,7 @@ async def index(request):
             updateStatus('Connecting...');
 
             try {
-                ws = new WebSocket(`ws://localhost:8080/ws?session_id=${currentSessionId}`);
+                ws = new WebSocket(`wss://test-app-adfz.onrender.com/ws?session_id=${currentSessionId}`);
 
                 ws.onopen = function() {
                     updateStatus('WebSocket connected, creating PeerConnection...');
@@ -980,7 +980,7 @@ async def main():
     global stream_manager
 
     # Initialize stream manager
-    stream_manager = StreamManager("ws://localhost:8000/inference")  # Inference server URL
+    stream_manager = StreamManager("ws://ftwoltm5pcoc72-8000.proxy.runpod.net/inference")  # Inference server URL
     await stream_manager.start()
 
     # Create and start web app
